@@ -1,16 +1,28 @@
-var express = require('express');
-var app = express();
-var fs = require("fs");
+const express = require("express");
+const bodyParser = require("body-parser");
+const router = express.Router();
+const app = express();
+
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/testing', function (req, res) {
       	
       res.end('testing');
 })
 
-app.get('/testing2', function (req, res) {
-      console.log(req);	
-      res.end('testing2');
+
+app.post('/testing2', function (request, response) {
+	 console.log(request.body);
 })
+
+app.get('/', function (req, res) {
+      res.end('parent');
+})
+
+// add router in the Express app.
+app.use("/", router);
 
 var server = app.listen(6060, function () {
    var host = server.address().address
