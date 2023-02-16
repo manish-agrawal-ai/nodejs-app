@@ -1,4 +1,4 @@
-FROM node
+FFROM node
 
 COPY /.  .
 RUN npm install
