@@ -1,4 +1,6 @@
 FROM node
+aasdasd
+das
 
 COPY /.  .
 RUN npm install
